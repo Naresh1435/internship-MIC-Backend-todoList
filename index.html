@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+  </head>
+
+  <body>
+    <div id="app"></div>
+    <input id="w" type="number" placeholder="Weight" />
+    <br />
+    <br />
+    <input id="h" type="number" placeholder="Height" />
+    <button id="btn" type="button">Caculate</button>
+    <br>
+    <br>
+    <h2 id="showBMI"></h2>
+    <script>
+      const btn = document.querySelector('#btn');
+      console.log(btn);
+      console.log( 1==1 && "Hi");
+      console.log(1!=1 || 'Hello');
+      
+    //   btn.addEventListener("click",calculateBMI);
+
+      function calculateBMI() {
+      	const w = parseFloat(document.querySelector('#w').value) || 0.0;
+      	const h = parseFloat(document.querySelector('#h').value) || 0.0;
+      	const BMI = w / (h*h);
+        console.log(typeof(BMI));
+        document.getElementById('showBMI').innerText = String(BMI);
+
+      }
+
+    </script>
+  </body>
+</html>
