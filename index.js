@@ -1,12 +1,19 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-
+const cors = require('cors')
 const app = express();
 
 app.use(bodyParser.urlencoded({
     extended : true
 }))
+
+const corsOptions = {
+    origin: '*',
+    credentials: true, //access-control-allow-credentials:true
+    optionSuccessStatus: 200
+}
+app.use(cors(corsOptions));
 
 mongoose.connect("mongodb+srv://chat_reader:Naresh_Chat_Reader@cluster1.mfgsg.mongodb.net/internshipDB?retryWrites=true&w=majority", {
   useUnifiedTopology: true,
@@ -34,6 +41,7 @@ app.get('/', (req,res)=>{
         res.json({data:data});
     }) 
 });
+
 
 app.post('/add', (req,res)=>{
     const newItem = new Item({
